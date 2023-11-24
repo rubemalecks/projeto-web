@@ -13,9 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as'=>'site.home', function () {
     return view('site.home');
-});
+}]);
+
+Route::get('/sobre', ['as' =>'site.sobre',function () {
+    return view('site.sobre');
+}]);
+
+Route::get('/contato', ['as' =>'site.contato',function () {
+    return view('site.contato');
+}]);
+
+
 
 Auth::routes();
 
@@ -32,3 +42,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

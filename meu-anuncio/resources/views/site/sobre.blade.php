@@ -1,8 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-@include('layouts._site._slider')
 <div class="container">
-    @include('layouts._site._lista_anuncios')
+    <h3 class="center">Sobre</h3>
 </div>
 @endsection

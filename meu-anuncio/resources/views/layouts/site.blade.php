@@ -23,16 +23,12 @@
         @include('layouts._site._nav')
 
     </header>
-    <div id="app">
-
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-<footer>
-@include('layouts._site._footer')
-</footer>
+    <main>
+        @yield('content')
+    </main>
+    <footer>
+        @include('layouts._site._footer')
+    </footer>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
