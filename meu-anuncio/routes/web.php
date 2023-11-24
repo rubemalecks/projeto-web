@@ -25,7 +25,9 @@ Route::get('/contato', ['as' =>'site.contato',function () {
     return view('site.contato');
 }]);
 
-
+Route::get('/anuncio/{id}/{titulo?}', ['as' =>'site.anuncio',function () {
+    return view('site.anuncio');
+}]);
 
 Auth::routes();
 

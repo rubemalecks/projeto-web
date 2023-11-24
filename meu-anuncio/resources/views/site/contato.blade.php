@@ -8,7 +8,7 @@
     </div>
     <div class="row section">
         <div class="col s12 m7">
-            <img src="{{ asset('img/mapa.jpg') }}" alt="" class="responsive-img">
+            <img src="{{ asset('img/mapa.jpeg') }}" alt="" class="responsive-img">
         </div>
         <div class="col s12 m5">
             <form action="" class="col s12">

@@ -6,7 +6,7 @@
     <div class="col s12 m3">
         <div class="card">
             <div class="card-image">
-                <a href="#"><img src="{{asset('img/anuncio.png')}}"></a>
+                <a href="/anuncio/1731/titulo_do_anuncio"><img src="{{asset('img/anuncio.png')}}"></a>
                 <span class="card-title">Titulo do Anúncio</span>
             </div>
             <div class="card-content">
@@ -15,7 +15,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -111,7 +111,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
@@ -127,7 +127,7 @@
                 <p>R$ 100.000,00</p>
             </div>
             <div class="card-action">
-                <a href="#">Mais detalhes...</a>
+                <a href="/anuncio/1731/titulo_do_anuncio">Mais detalhes...</a>
             </div>
         </div>
     </div>
