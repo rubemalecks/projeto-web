@@ -13,35 +13,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ['as'=>'site.home', function () {
-    return view('site.home');
-}]);
+Route::get('/', [
+    'as' => 'site.home',
+    function () {
+        return view('site.home');
+    }
+]);
 
-Route::get('/sobre', ['as' =>'site.sobre',function () {
-    return view('site.sobre');
-}]);
+Route::get('/sobre', [
+    'as' => 'site.sobre',
+    function () {
+        return view('site.sobre');
+    }
+]);
 
-Route::get('/contato', ['as' =>'site.contato',function () {
-    return view('site.contato');
-}]);
+Route::get('/contato', [
+    'as' => 'site.contato',
+    function () {
+        return view('site.contato');
+    }
+]);
 
-Route::get('/anuncio/{id}/{titulo?}', ['as' =>'site.anuncio',function () {
-    return view('site.anuncio');
-}]);
+Route::get('/anuncio/{id}/{titulo?}', [
+    'as' => 'site.anuncio',
+    function () {
+        return view('site.anuncio');
+    }
+]);
 
-Auth::routes();
+//Auth::routes();
+
+Route::get('/admin/login', [
+    'as' => 'admin.login',
+    function () {
+        return view('admin.login.index');
+    }
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

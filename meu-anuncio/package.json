@@ -4,8 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "start": "concurrently \"npm run dev\" \"php artisan serve\""
-    },
+        "start": "concurrently \"npm run dev\" \"php artisan serve\"" },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-vue": "^4.0.0",
