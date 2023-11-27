@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\Admin\UsuarioController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,14 +45,14 @@ Route::get('/anuncio/{id}/{titulo?}', [
 ]);
 
 //Auth::routes();
+Route::get('/admin', ['as' => 'admin.home', function () {
+    return view('admin.home.index');
+}]);
 
-Route::get('/admin/login', [
-    'as' => 'admin.login',
-    function () {
-        return view('admin.login.index');
-    }
-]);
+Route::get('/admin/login', ['as' => 'admin.login', function () {
+    return view('admin.login.index');
+}]);
+
+Route::post('/admin/login', [UsuarioController::class, 'login'])->name('admin.login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
