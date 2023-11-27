@@ -1,15 +1,27 @@
 <nav>
     <div class="nav-wrapper black">
         <div class="container">
-            <a href="#!" class="brand-logo">MeuAnuncio.com</a>
+            <a href=" route('site.home')" class="brand-logo" target="_blank">MeuAnuncio.com</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Início</a></li>
+                @if(Auth::guest())
+                <li><a href="{ route('admin.login')}">Entrar</a></li>
+                @else
+                <li><a href="{ route('admin.home')}">Início</a></li>
+                <li><a href="#">{{Auth::user()->name}}</a></li>
+                <li><a href="{ route('admin.logout')}">Sair</a></li>
+                @endif
             </ul>
         </div>
     </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-    <li><a href="#">Inicio</a></li>
+    @if(Auth::guest())
+    <li><a href="{ route('admin.login')}">Entrar</a></li>
+    @else
+    <li><a href="{ route('admin.home')}">Início</a></li>
+    <li><a href="#">{{Auth::user()->name}}</a></li>
+    <li><a href="{ route('admin.logout')}">Sair</a></li>
+    @endif
 </ul>

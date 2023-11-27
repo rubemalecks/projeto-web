@@ -25,4 +25,20 @@ class UsuarioController extends Controller
         );
         return redirect()->route('admin.login');
     }
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+
+        $request->session()->flash(
+            'mensagem',
+            ['msg' => 'Sessão encerrada com sucesso!', 'class' => 'green white-text']
+        );
+        return redirect()->route('admin.login');
+    }
 }
