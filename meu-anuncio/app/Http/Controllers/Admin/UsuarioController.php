@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+use App\Models\User;
 
 class UsuarioController extends Controller
 {
@@ -40,5 +43,58 @@ class UsuarioController extends Controller
             ['msg' => 'Sessão encerrada com sucesso!', 'class' => 'green white-text']
         );
         return redirect()->route('admin.login');
+    }
+
+    public function index()
+    {
+        $usuarios = User::all()->sortBy('name');
+        return view('admin.usuarios.index', compact('usuarios'));
+    }
+
+    public function cadastrar()
+    {
+        return view('admin.usuarios.cadastrar');
+    }
+
+    public function salvar(Request $request)
+    {
+        $dados = $request->all();
+
+        $usuario = new User();
+        $usuario->name = $dados['name'];
+        $usuario->email = $dados['email'];
+        $usuario->password = Hash::make($dados['password']);
+        $usuario->save();
+
+        $request->session()->flash(
+            'mensagem',
+            ['msg' => 'Usuário cadastrado com sucesso!', 'class' => 'green white-text']
+        );
+        return redirect()->route('admin.usuarios');
+    }
+
+    public function alterar($id)
+    {
+        $usuario = User::find($id);
+        return view('admin.usuarios.alterar', compact('usuario'));
+    }
+
+    public function atualizar(Request $request, $id)
+    {
+        $dados = $request->all();
+        if (isset($dados['password']) && strlen($dados['password'] > 5))
+            $dados['password'] = Hash::make($dados['password']);
+        else
+            unset($dados['password']);
+
+        $usuario = User::find($id);
+        
+        $usuario->update($dados);
+
+        $request->session()->flash(
+            'mensagem',
+            ['msg' => 'Usuário atualizado com sucesso!', 'class' => 'green white-text']
+        );
+        return redirect()->route('admin.usuarios');
     }
 }
