@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/admin/usuarios/atualizar/{id}', [UsuarioController::class, 'atualizar'])->name('admin.usuarios.atualizar');
 
+    Route::delete('/admin/usuarios/remover/{id}', [UsuarioController::class, 'remover'])->name('admin.usuarios.remover');
+
 });
 
 
