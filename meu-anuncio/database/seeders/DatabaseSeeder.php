@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             //PermissaoSeeder::class,
             //PapelPermissaoSeeder::class,
             UsuarioSeeder::class,
+            PaginaSeeder::class,
             //UsuarioPapelSeeder::class,
         ]);
     }
