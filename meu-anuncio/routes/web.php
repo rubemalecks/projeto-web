@@ -27,12 +27,15 @@ Route::get('/', [
 
 Route::get('/sobre', [PaginaSite::class, 'sobre'])->name('site.sobre');
 
-Route::get('/contato', [
+Route::get('/contato', [PaginaSite::class, 'contato'])->name('site.contato');
+Route::post('/contato', [PaginaSite::class, 'enviarContato'])->name('site.contato');
+
+/*Route::get('/contato', [
     'as' => 'site.contato',
     function () {
         return view('site.contato');
     }
-]);
+]);*/
 
 Route::get('/anuncio/{id}/{titulo?}', [
     'as' => 'site.anuncio',

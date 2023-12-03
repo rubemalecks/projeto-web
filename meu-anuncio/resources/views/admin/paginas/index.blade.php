@@ -34,7 +34,7 @@
                         <td>{{ $pagina->titulo }}</td>
                         <td>{{ $pagina->descricao }}</td>
                         <td>
-                            <a href="{{route('admin.paginas.alterar', $pagina->id)}}" class="btn blue">ATUALIZAR</a>
+                            <a href="{{route('admin.paginas.alterar', $pagina->id)}}" class="btn blue"><i class="Medium material-icons">edit</i></a>
                         </td>
                     </tr>
                 @endforeach

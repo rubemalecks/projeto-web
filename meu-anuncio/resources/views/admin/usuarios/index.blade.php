@@ -32,12 +32,21 @@
                         <td>{{ $usuario->name }}</td>
                         <td>{{ $usuario->email }}</td>
                         <td>
-                            <form action="{{route('admin.usuarios.remover', $usuario->id)}}" method="POST">
+                            <form action="{{ route('admin.usuarios.remover', $usuario->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="_method" value="delete">
-                                <a href="{{route('admin.usuarios.alterar', $usuario->id)}}" class="btn blue">ATUALIZAR</a>
-                                <button onclick="return remover(this.form,'{{ $usuario->name }}')" class="btn red">REMOVER</button>
+                            
+                                <!-- Botão de Edição -->
+                                <a href="{{ route('admin.usuarios.alterar', $usuario->id) }}" class="btn blue" onclick="disable">
+                                    <i class="Medium material-icons">edit</i>
+                                </a>
+                            
+                                <!-- Botão de Remoção -->
+                                <button type="submit" class="btn red" onclick="return remover(this.form, '{{ $usuario->name }}')">
+                                    <i class="Medium material-icons">delete</i>
+                                </button>
                             </form>
+                            
                         </td>
                     </tr>
                 @endforeach
