@@ -21,7 +21,7 @@
                 @csrf
                 <div class="input-field">
                     <input type="text" id="nome" name="nome" class="validate">
-                    <label for="name">Nome</label>
+                    <label for="nome">Nome</label>
                 </div>
                 <div class="input-field">
                     <input type="email" id="email" name="email" class="validate">

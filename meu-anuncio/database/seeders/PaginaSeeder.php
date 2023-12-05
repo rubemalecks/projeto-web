@@ -44,7 +44,7 @@ class PaginaSeeder extends Seeder
 
         $paginaContato->titulo = 'Entre em Contato';
         $paginaContato->descricao = 'Preencha o formulário abaixo';
-        $paginaContato->email = 'contato@dominio.com.br';
+        $paginaContato->email = 'aa8f0b20134220';
         $paginaContato->texto = '';
         $paginaContato->imagem = '/img/megafone.jpg';
         $paginaContato->mapa = null;
