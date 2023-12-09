@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 
+use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\MunicipioController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Admin\PaginaController as PaginaAdmin;
 use App\Http\Controllers\Site\PaginaController as PaginaSite;
+use App\Models\Municipio;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +81,31 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/paginas/alterar/{id}', [PaginaAdmin::class, 'alterar'])->name('admin.paginas.alterar');
 
     Route::put('/admin/paginas/atualizar/{id}', [PaginaAdmin::class, 'atualizar'])->name('admin.paginas.atualizar');
+
+    Route::get('/admin/categorias', [CategoriaController::class, 'index'])->name('admin.categorias');
+
+    Route::get('/admin/categorias/cadastrar', [CategoriaController::class, 'cadastrar'])->name('admin.categorias.cadastrar');
+
+    Route::post('/admin/categorias', [CategoriaController::class, 'salvar'])->name('admin.categorias');
+
+    Route::get('/admin/categorias/alterar/{id}', [CategoriaController::class, 'alterar'])->name('admin.categorias.alterar');
+
+    Route::put('/admin/usuarios/atualizar/{id}', [CategoriaController::class, 'atualizar'])->name('admin.categorias.atualizar');
+
+    Route::delete('/admin/usuarios/remover/{id}', [CategoriaController::class, 'remover'])->name('admin.categorias.remover');
+
+
+    Route::get('/admin/municipios', [MunicipioController::class, 'index'])->name('admin.municipios');
+
+    Route::get('/admin/municipios/cadastrar', [MunicipioController::class, 'cadastrar'])->name('admin.municipios.cadastrar');
+
+    Route::post('/admin/municipios', [MunicipioController::class, 'salvar'])->name('admin.municipios');
+
+    Route::get('/admin/municipios/alterar/{id}', [MunicipioController::class, 'alterar'])->name('admin.municipios.alterar');
+
+    Route::put('/admin/usuarios/atualizar/{id}', [MunicipioController::class, 'atualizar'])->name('admin.municipios.atualizar');
+
+    Route::delete('/admin/usuarios/remover/{id}', [MunicipioController::class, 'remover'])->name('admin.municipios.remover');
 
 });
 
