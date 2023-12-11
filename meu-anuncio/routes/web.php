@@ -80,10 +80,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/municipios/alterar/{id}', [MunicipioController::class, 'alterar'])->name('admin.municipios.alterar');
     Route::put('/admin/usuarios/atualizar/{id}', [MunicipioController::class, 'atualizar'])->name('admin.municipios.atualizar');
     Route::delete('/admin/usuarios/remover/{id}', [MunicipioController::class, 'remover'])->name('admin.municipios.remover');
-
 });
-
-
-
-
-
