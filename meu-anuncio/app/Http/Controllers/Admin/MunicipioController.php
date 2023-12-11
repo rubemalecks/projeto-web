@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Anuncio;
 use App\Models\Municipio;
 
 class MunicipioController extends Controller
 {
     public function index()
     {
-        $municipios = Municipio::all()->sortBy('titulo');
+        $municipios = Municipio::all()->sortBy('nome');
         return view('admin.municipios.index', compact('municipios'));
     }
 
@@ -46,8 +47,11 @@ class MunicipioController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->all();
+
         $municipio = Municipio::find($id);
         $municipio->nome = $dados['nome'];
+        $municipio->uf = $dados['uf'];
+        $municipio->sigla_uf = $dados['sigla_uf'];
         $municipio->update();
 
         $request->session()->flash(
@@ -59,14 +63,25 @@ class MunicipioController extends Controller
 
     public function remover(Request $request, $id)
     {
-       
+        if (Anuncio::where('municipio_id', '=', $id)->count() > 0) {
+            $msg = "Não é possível remover um município que possua anúncios vinculados:";
+            $anuncios = Anuncio::where('municipio_id', '=', $id)->get();
+            foreach ($anuncios as $anuncio) {
+                $msg .= " id:" . $anuncio->id;
+            }
+            $request->session()->flash(
+                'mensagem',
+                ['msg' => $msg, 'class' => 'red white-text']
+            );
+            return redirect()->route('admin.municipios');
+        }
+
         Municipio::find($id)->delete();
-        
+
         $request->session()->flash(
             'mensagem',
             ['msg' => 'Município removido com sucesso!', 'class' => 'green white-text']
         );
         return redirect()->route('admin.municipios');
     }
-
 }

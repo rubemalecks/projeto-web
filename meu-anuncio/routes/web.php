@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\AnuncioController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\MunicipioController;
-use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Admin\PaginaController as PaginaAdmin;
+use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Site\PaginaController as PaginaSite;
-use App\Models\Municipio;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,29 +15,23 @@ use App\Models\Municipio;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::get('/', [
-    'as' => 'site.home',
-    function () {
-        return view('site.home');
-    }
-]);
+Route::get('/', ['as' => 'site.home', function () {
+    return view('site.home');
+}]);
 
 Route::get('/sobre', [PaginaSite::class, 'sobre'])->name('site.sobre');
 
 Route::get('/contato', [PaginaSite::class, 'contato'])->name('site.contato');
 Route::post('/contato', [PaginaSite::class, 'enviarContato'])->name('site.contato');
 
-Route::get('/anuncio/{id}/{titulo?}', [
-    'as' => 'site.anuncio',
-    function () {
-        return view('site.anuncio');
-    }
-]);
+Route::get('/anuncio/{id}/{titulo?}', ['as' => 'site.anuncio', function () {
+    return view('site.anuncio');
+}]);
 
 //Auth::routes();
 
@@ -61,7 +55,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/usuarios/atualizar/{id}', [UsuarioController::class, 'atualizar'])->name('admin.usuarios.atualizar');
     Route::delete('/admin/usuarios/remover/{id}', [UsuarioController::class, 'remover'])->name('admin.usuarios.remover');
 
-
     Route::get('/admin/paginas', [PaginaAdmin::class, 'index'])->name('admin.paginas');
     Route::get('/admin/paginas/alterar/{id}', [PaginaAdmin::class, 'alterar'])->name('admin.paginas.alterar');
     Route::put('/admin/paginas/atualizar/{id}', [PaginaAdmin::class, 'atualizar'])->name('admin.paginas.atualizar');
@@ -73,11 +66,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/categorias/atualizar/{id}', [CategoriaController::class, 'atualizar'])->name('admin.categorias.atualizar');
     Route::delete('/admin/categorias/remover/{id}', [CategoriaController::class, 'remover'])->name('admin.categorias.remover');
 
-
     Route::get('/admin/municipios', [MunicipioController::class, 'index'])->name('admin.municipios');
     Route::get('/admin/municipios/cadastrar', [MunicipioController::class, 'cadastrar'])->name('admin.municipios.cadastrar');
     Route::post('/admin/municipios', [MunicipioController::class, 'salvar'])->name('admin.municipios');
     Route::get('/admin/municipios/alterar/{id}', [MunicipioController::class, 'alterar'])->name('admin.municipios.alterar');
-    Route::put('/admin/usuarios/atualizar/{id}', [MunicipioController::class, 'atualizar'])->name('admin.municipios.atualizar');
-    Route::delete('/admin/usuarios/remover/{id}', [MunicipioController::class, 'remover'])->name('admin.municipios.remover');
+    Route::put('/admin/municipios/atualizar/{id}', [MunicipioController::class, 'atualizar'])->name('admin.municipios.atualizar');
+    Route::delete('/admin/municipios/remover/{id}', [MunicipioController::class, 'remover'])->name('admin.municipios.remover');
+
+    Route::get('/admin/anuncios', [AnuncioController::class, 'index'])->name('admin.anuncios');
+    Route::get('/admin/anuncios/cadastrar', [AnuncioController::class, 'cadastrar'])->name('admin.anuncios.cadastrar');
+    Route::post('/admin/anuncios', [AnuncioController::class, 'salvar'])->name('admin.anuncios');
+    Route::get('/admin/anuncios/alterar/{id}', [AnuncioController::class, 'alterar'])->name('admin.anuncios.alterar');
+    Route::put('/admin/anuncios/atualizar/{id}', [AnuncioController::class, 'atualizar'])->name('admin.anuncios.atualizar');
+    Route::delete('/admin/anuncios/remover/{id}', [AnuncioController::class, 'remover'])->name('admin.anuncios.remover');
 });

@@ -26,6 +26,9 @@
                 <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
                 <li><a href="{{ route('admin.categorias') }}">Categorias</a></li>
                 <li><a href="{{ route('admin.municipios') }}">Municípios</a></li>
+                <li><a href="{{ route('admin.anuncios') }}">Anúncios</a></li>
+                <li><a href="{{ route('admin.logout') }}">Sair</a></li>
+
             </ul>
         </div>
     </div>
@@ -41,6 +44,7 @@
     <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
     <li><a href="{{ route('admin.categorias') }}">Categorias</a></li>
     <li><a href="{{ route('admin.municipios') }}">Municípios</a></li>
+    <li><a href="{{ route('admin.anuncios') }}">Anúncios</a></li>
     <li><a href="{{ route('admin.logout') }}">Sair</a></li>
     @endguest
 </ul>

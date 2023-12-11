@@ -29,14 +29,13 @@ class UsuarioController extends Controller
         return redirect()->route('admin.login');
     }
 
-
     public function logout(Request $request)
     {
         Auth::logout();
+
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
 
         $request->session()->flash(
             'mensagem',
@@ -82,13 +81,12 @@ class UsuarioController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->all();
-        if (isset($dados['password']) && strlen($dados['password'] > 5))
+        if (isset($dados['password']) && strlen($dados['password']) > 5)
             $dados['password'] = Hash::make($dados['password']);
         else
             unset($dados['password']);
 
         $usuario = User::find($id);
-        
         $usuario->update($dados);
 
         $request->session()->flash(
@@ -100,15 +98,12 @@ class UsuarioController extends Controller
 
     public function remover(Request $request, $id)
     {
-       
         User::find($id)->delete();
-        
+
         $request->session()->flash(
             'mensagem',
             ['msg' => 'Usuário removido com sucesso!', 'class' => 'green white-text']
         );
         return redirect()->route('admin.usuarios');
     }
-
-
 }
