@@ -9,11 +9,18 @@ class Anuncio extends Model
 {
     use HasFactory;
 
-    public function categoria() {
+    public function categoria()
+    {
         return $this->belongsTo('App\Models\Categoria', 'categoria_id');
     }
 
-    public function municipio() {
+    public function municipio()
+    {
         return $this->belongsTo('App\Models\Municipio', 'municipio_id');
+    }
+
+    public function imagens()
+    {
+        return $this->hasMany('App\Models\Imagem', 'anuncio_id');
     }
 }

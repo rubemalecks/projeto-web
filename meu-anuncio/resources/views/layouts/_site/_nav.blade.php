@@ -1,7 +1,7 @@
 <nav>
     <div class="nav-wrapper black">
         <div class="container">
-            <a href="{{ route('site.home') }}" class="brand-logo">AnúncioWeb</a>
+            <a href="{{ route('site.home') }}" class="brand-logo">MeuAnuncio.com</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ route('site.home') }}">Início</a></li>
