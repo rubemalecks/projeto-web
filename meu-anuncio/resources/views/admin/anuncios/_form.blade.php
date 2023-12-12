@@ -1,18 +1,16 @@
 <div class="input-field">
-    <input type="text" class="validate" id="titulo" name="titulo"
-        value="{{ isset($anuncio->titulo) ? $anuncio->titulo : '' }}">
+    <input type="text" class="validate" id="titulo" name="titulo" value="{{ isset($anuncio->titulo) ? $anuncio->titulo : '' }}" required>
     <label for="titulo">Título</label>
 </div>
 <div class="input-field">
-    <input type="text" class="validate" id="descricao" name="descricao"
-        value="{{ isset($anuncio->descricao) ? $anuncio->descricao : '' }}">
+    <input type="text" class="validate" id="descricao" name="descricao" value="{{ isset($anuncio->descricao) ? $anuncio->descricao : '' }} " required>
     <label for="descricao">Descrição</label>
 </div>
 <div class="row">
     <div class="file-field input-field col m6 s12">
         <div class="btn">
             <span>Imagem</span>
-            <input type="file" id="imagem" name="imagem">
+            <input type="file" id="imagem" name="imagem" required>
         </div>
         <div class="file-path-wrapper">
             <input class="file-path validate" type="text">
@@ -45,12 +43,11 @@
     <label for="categoria_id">Categoria</label>
 </div>
 <div class="input-field">
-    <input type="text" class="validate" id="endereco" name="endereco"
-        value="{{ isset($anuncio->endereco) ? $anuncio->endereco : '' }}">
+    <input type="text" class="validate" id="endereco" name="endereco" value="{{ isset($anuncio->endereco) ? $anuncio->endereco : '' }}" required>
     <label for="endereco">Endereço</label>
 </div>
 <div class="input-field">
-    <input type="text" class="validate" id="cep" name="cep" value="{{ isset($anuncio->cep) ? $anuncio->cep : '' }}">
+    <input type="text" class="validate" id="cep" name="cep" value="{{ isset($anuncio->cep) ? $anuncio->cep : '' }}" required>
     <label for="cep">CEP (Ex.: 12345-678)</label>
 </div>
 <div class="input-field">
@@ -63,18 +60,15 @@
     <label for="municipio_id">Município</label>
 </div>
 <div class="input-field">
-    <input type="number" class="validate" id="valor" name="valor" min="0"
-        value="{{ isset($anuncio->valor) ? number_format($anuncio->valor, 2, '.', '') : '' }}" step="0.01">
+    <input type="number" class="validate" id="valor" name="valor" min="0" value="{{ isset($anuncio->valor) ? number_format($anuncio->valor, 2, '.', '') : '' }}" step="0.01" required>
     <label for="valor">Valor (Ex.: 324,90)</label>
 </div>
 <div class="input-field">
-    <textarea id="detalhes" name="detalhes"
-        class="materialize-textarea">{{ isset($anuncio->detalhes) ? $anuncio->detalhes : '' }}</textarea>
+    <textarea id="detalhes" name="detalhes" class="materialize-textarea" required>{{ isset($anuncio->detalhes) ? $anuncio->detalhes : '' }}</textarea>
     <label for="detalhes">Detalhes</label>
 </div>
 <div class="input-field">
-    <textarea id="mapa" name="mapa"
-        class="materialize-textarea">{{ isset($anuncio->mapa) ? $anuncio->mapa : '' }}</textarea>
+    <textarea id="mapa" name="mapa" class="materialize-textarea">{{ isset($anuncio->mapa) ? $anuncio->mapa : '' }}</textarea>
     <label for="mapa">Mapa (Copie e cole o iframe do Google Maps)</label>
 </div>
 <div class="input-field">

@@ -20,7 +20,7 @@ class HomeController extends Controller
         $municipios = Municipio::orderBy('nome')->get();
         $anuncios = Anuncio::where('status', '=', 'Publicado')
             ->orderBy('id', 'desc')
-            ->paginate(20);
+            ->paginate(12);
         $alinhamentos = ['center-align', 'left-align', 'right-align'];
         return view('site.home', compact('slides', 'categorias', 'municipios', 'anuncios', 'alinhamentos'));
     }
@@ -68,7 +68,7 @@ class HomeController extends Controller
         if (isset($dados['endereco']) && $dados['endereco'] != '')
             $query = $query->where('endereco', 'LIKE', '%' . $dados['endereco'] . '%');
         $anuncios = $query->orderBy('id', 'desc')
-            ->paginate(20);
+            ->paginate(12);
 
         return view('site.busca', compact('dados', 'categorias', 'municipios', 'anuncios'));
     }

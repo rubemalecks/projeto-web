@@ -16,7 +16,7 @@ blockquote {
 
 .caption :is(h3, h5),
 .card-title {
-    text-shadow: 0 0 3px blue;
+    text-shadow: 0 0 3px black;
 }
 
 .card-title.home {
@@ -25,10 +25,12 @@ blockquote {
 }
 
 .flex.items-center.justify-between {
-    background-color: #64b5f6;
+    background-color: #000000;
 }
 .btn {
     background-color: black !important;
     color: white !important;
     /* Adicione mais estilos conforme necessário, sempre usando !important se necessário */
 }
+
+
