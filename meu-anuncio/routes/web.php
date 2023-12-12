@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\ImagemController;
 use App\Http\Controllers\Admin\MunicipioController;
 use App\Http\Controllers\Admin\PaginaController as PaginaAdmin;
+use App\Http\Controllers\Admin\PapelController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UsuarioController;
 use App\Http\Controllers\Site\AnuncioController as AnuncioSite;
@@ -25,6 +26,8 @@ use App\Http\Controllers\Site\PaginaController as PaginaSite;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('site.home');
+
+Route::get('/busca', [HomeController::class, 'busca'])->name('site.busca');
 
 Route::get('/sobre', [PaginaSite::class, 'sobre'])->name('site.sobre');
 
@@ -54,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/usuarios/alterar/{id}', [UsuarioController::class, 'alterar'])->name('admin.usuarios.alterar');
     Route::put('/admin/usuarios/atualizar/{id}', [UsuarioController::class, 'atualizar'])->name('admin.usuarios.atualizar');
     Route::delete('/admin/usuarios/remover/{id}', [UsuarioController::class, 'remover'])->name('admin.usuarios.remover');
+    Route::get('/admin/usuarios/{id}/papeis', [UsuarioController::class, 'papeis'])->name('admin.usuarios.papeis');
+    Route::post('/admin/usuarios/{id}/papeis', [UsuarioController::class, 'salvarPapel'])->name('admin.usuarios.papeis');
+    Route::delete('/admin/usuarios/{id}/papeis/remover/{idPapel}', [UsuarioController::class, 'removerPapel'])->name('admin.usuarios.papeis.remover');
 
     Route::get('/admin/paginas', [PaginaAdmin::class, 'index'])->name('admin.paginas');
     Route::get('/admin/paginas/alterar/{id}', [PaginaAdmin::class, 'alterar'])->name('admin.paginas.alterar');
@@ -93,4 +99,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/slides/alterar/{id}', [SlideController::class, 'alterar'])->name('admin.slides.alterar');
     Route::put('/admin/slides/atualizar/{id}', [SlideController::class, 'atualizar'])->name('admin.slides.atualizar');
     Route::delete('/admin/slides/remover/{id}', [SlideController::class, 'remover'])->name('admin.slides.remover');
+
+    Route::get('/admin/papeis', [PapelController::class, 'index'])->name('admin.papeis');
+    Route::get('/admin/papeis/cadastrar', [PapelController::class, 'cadastrar'])->name('admin.papeis.cadastrar');
+    Route::post('/admin/papeis', [PapelController::class, 'salvar'])->name('admin.papeis');
+    Route::get('/admin/papeis/alterar/{id}', [PapelController::class, 'alterar'])->name('admin.papeis.alterar');
+    Route::put('/admin/papeis/atualizar/{id}', [PapelController::class, 'atualizar'])->name('admin.papeis.atualizar');
+    Route::delete('/admin/papeis/remover/{id}', [PapelController::class, 'remover'])->name('admin.papeis.remover');
+    Route::get('/admin/papeis/{id}/permissoes', [PapelController::class, 'permissoes'])->name('admin.papeis.permissoes');
+    Route::post('/admin/papeis/{id}/permissoes', [PapelController::class, 'salvarPermissao'])->name('admin.papeis.permissoes');
+    Route::delete('/admin/papeis/{id}/permissoes/remover/{idPermissao}', [PapelController::class, 'removerPermissao'])->name('admin.papeis.permissoes.remover');
 });

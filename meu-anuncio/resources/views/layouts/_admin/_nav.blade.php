@@ -18,6 +18,7 @@
             @if(!Auth::guest())
             <ul id='dropdown1' class='dropdown-content'>
                 <li><a href="#">{{ Auth::user()->name }}</a></li>
+                <li><a href="{{ route('admin.papeis') }}">Papéis</a></li>
                 <li><a href="{{ route('admin.usuarios') }}">Usuários</a></li>
                 <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
                 <li><a href="{{ route('admin.slides') }}">Slides</a></li>
@@ -36,6 +37,7 @@
     @else
     <li><a href="{{ route('admin.home') }}">Início</a></li>
     <li><a href="#">{{ Auth::user()->name }}</a></li>
+    <li><a href="{{ route('admin.papeis') }}">Papéis</a></li>
     <li><a href="{{ route('admin.usuarios') }}">Usuários</a></li>
     <li><a href="{{ route('admin.paginas') }}">Páginas</a></li>
     <li><a href="{{ route('admin.slides') }}">Slides</a></li>

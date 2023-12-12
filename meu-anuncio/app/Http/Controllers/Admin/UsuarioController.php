@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Papel;
 use App\Models\User;
 
 class UsuarioController extends Controller
@@ -15,17 +16,13 @@ class UsuarioController extends Controller
     {
         $dados = $request->all();
         if (Auth::attempt(['email' => $dados['email'], 'password' => $dados['password']])) {
-            $request->session()->flash(
-                'mensagem',
-                ['msg' => 'Login efetuado com sucesso!', 'class' => 'green white-text']
-            );
+            $request->session()->flash('mensagem',
+                ['msg' => 'Login efetuado com sucesso!', 'class' => 'green white-text']);
             return redirect()->route('admin.home');
         }
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'Erro: dados de login incorretos!', 'class' => 'red white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'Erro: dados de login incorretos!', 'class' => 'red white-text']);
         return redirect()->route('admin.login');
     }
 
@@ -37,15 +34,19 @@ class UsuarioController extends Controller
 
         $request->session()->regenerateToken();
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'Sessão encerrada com sucesso!', 'class' => 'green white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'Sessão encerrada com sucesso!', 'class' => 'green white-text']);
         return redirect()->route('admin.login');
     }
 
     public function index()
     {
+        /*if (Auth::user()->can('listar-usuarios', false)) {
+            dd('Sucesso!');
+        } else {
+            dd('Fracasso!');
+        }*/
+
         $usuarios = User::all()->sortBy('name');
         return view('admin.usuarios.index', compact('usuarios'));
     }
@@ -65,10 +66,8 @@ class UsuarioController extends Controller
         $usuario->password = Hash::make($dados['password']);
         $usuario->save();
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'Usuário cadastrado com sucesso!', 'class' => 'green white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'Usuário cadastrado com sucesso!', 'class' => 'green white-text']);
         return redirect()->route('admin.usuarios');
     }
 
@@ -89,10 +88,8 @@ class UsuarioController extends Controller
         $usuario = User::find($id);
         $usuario->update($dados);
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'Usuário atualizado com sucesso!', 'class' => 'green white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'Usuário atualizado com sucesso!', 'class' => 'green white-text']);
         return redirect()->route('admin.usuarios');
     }
 
@@ -100,10 +97,32 @@ class UsuarioController extends Controller
     {
         User::find($id)->delete();
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'Usuário removido com sucesso!', 'class' => 'green white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'Usuário removido com sucesso!', 'class' => 'green white-text']);
         return redirect()->route('admin.usuarios');
+    }
+
+    public function papeis($id)
+    {
+        $usuario = User::find($id);
+        $papeis = Papel::orderBy('nome')->get();
+        return view('admin.usuarios.papeis', compact('usuario', 'papeis'));
+    }
+
+    public function salvarPapel(Request $request, $id)
+    {
+        $dados = $request->all();
+        $usuario = User::find($id);
+        $papel = Papel::find($dados['papel_id']);
+        $usuario->adicionarPapel($papel);
+        return redirect()->back();
+    }
+
+    public function removerPapel($id, $idPapel)
+    {
+        $usuario = User::find($id);
+        $papel = Papel::find($idPapel);
+        $usuario->removerPapel($papel);
+        return redirect()->back();
     }
 }

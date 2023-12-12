@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
         'name',
@@ -24,9 +23,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for arrays.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -34,12 +33,34 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    public function papeis()
+    {
+        return $this->belongsToMany(Papel::class);
+    }
+
+    public function adicionarPapel($papel)
+    {
+        if (is_string($papel)) {
+            return $this->papeis()->attach(Papel::where('nome', '=', $papel)->firstOrFail());
+        }
+
+        return $this->papeis()->attach(Papel::where('nome', '=', $papel->nome)->firstOrFail());
+    }
+
+    public function removerPapel($papel)
+    {
+        if (is_string($papel)) {
+            return $this->papeis()->detach(Papel::where('nome', '=', $papel)->firstOrFail());
+        }
+
+        return $this->papeis()->detach(Papel::where('nome', '=', $papel->nome)->firstOrFail());
+    }
 }

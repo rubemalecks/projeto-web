@@ -29,5 +29,5 @@
     @endforeach
 </div>
 <div class="row center">
-    {{ $anuncios->links() }}
+    {{ $anuncios->withQueryString()->links() }}
 </div>
