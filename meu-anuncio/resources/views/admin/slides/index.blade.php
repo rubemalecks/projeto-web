@@ -2,14 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h2 class="center">Imagens do Anúncio</h2>
+    <h2 class="center">Slides do Site</h2>
     <div class="row">
         <nav>
             <div class="nav-wrapper black">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
-                    <a href="{{ route('admin.anuncios') }}" class="breadcrumb">Listagem de Anúncios</a>
-                    <a class="breadcrumb">Imagens do Anúncio</a>
+                    <a class="breadcrumb">Slides do Site</a>
                 </div>
             </div>
         </nav>
@@ -18,28 +17,28 @@
         <table class="highlight">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Ordem</th>
                     <th>Titulo</th>
                     <th>Descrição</th>
+                    <th>Status</th>
                     <th>Imagem</th>
-                    <th>Ordem</th>
                     <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($imagens as $imagem)
+                @foreach($slides as $slide)
                 <tr>
-                    <td>{{ $imagem->id }}</td>
-                    <td>{{ $imagem->titulo }}</td>
-                    <td>{{ $imagem->descricao }}</td>
-                    <td><img src="{{ asset($imagem->imagem) }}" alt="" width="100"></td>
-                    <td>{{ $imagem->ordem }}</td>
+                    <td>{{ $slide->ordem }}</td>
+                    <td>{{ $slide->titulo }}</td>
+                    <td>{{ $slide->descricao }}</td>
+                    <td>{{ $slide->status }}</td>
+                    <td><img src="{{ asset($slide->imagem) }}" alt="" width="100"></td>
                     <td>
-                        <form action="{{ route('admin.imagens.remover', $imagem->id) }}" method="post">
+                        <form action="{{ route('admin.slides.remover', $slide->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value="delete">
-                            <a href="{{ route('admin.imagens.alterar', $imagem->id) }}" class="btn orange">Atualizar</a>
-                            <button onclick="return remover(this.form, '{{ $imagem->titulo }}')"
+                            <a href="{{ route('admin.slides.alterar', $slide->id) }}" class="btn orange">Atualizar</a>
+                            <button onclick="return remover(this.form, '{{ $slide->titulo }}')"
                                 class="btn red">Remover</button>
                         </form>
                     </td>
@@ -49,12 +48,12 @@
         </table>
     </div>
     <div class="row">
-        <a href="{{ route('admin.imagens.cadastrar', $anuncio->id) }}" class="btn black">Cadastrar</a>
+        <a href="{{ route('admin.slides.cadastrar') }}" class="btn black">Cadastrar</a>
     </div>
 </div>
 <script>
     function remover(form, titulo) {
-        if (confirm("Confirma a remoção da imagem '" + titulo + "'?")) {
+        if (confirm("Confirma a remoção do slide '" + titulo + "'?")) {
             form.submit();
         } else {
             return false;

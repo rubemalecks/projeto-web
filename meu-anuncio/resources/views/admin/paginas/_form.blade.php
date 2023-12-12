@@ -26,7 +26,7 @@
 
 <div class="row">
     <div class="file-field input-field col m6 s12">
-        <div class="btn">
+        <div class="btn black">
           <span>Imagem</span>
           <input type="file" id="imagem" name="imagem">
         </div>

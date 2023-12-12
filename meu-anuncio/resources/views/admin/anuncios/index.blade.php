@@ -5,7 +5,7 @@
     <h2 class="center">Listagem de Anúncios</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper blue darken-1">
+            <div class="nav-wrapper black darken-1">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a class="breadcrumb">Listagem de Anúncios</a>
@@ -54,7 +54,7 @@
         </table>
     </div>
     <div class="row">
-        <a href="{{ route('admin.anuncios.cadastrar') }}" class="btn blue">Cadastrar</a>
+        <a href="{{ route('admin.anuncios.cadastrar') }}" class="btn black">Cadastrar</a>
     </div>
 </div>
 <script>
