@@ -19,10 +19,14 @@ blockquote {
     text-shadow: 0 0 3px blue;
 }
 
+.card-title.home {
+    font-weight: bold;
+    text-shadow: none;
+}
+
 .flex.items-center.justify-between {
     background-color: #64b5f6;
 }
-
 .btn {
     background-color: black !important;
     color: white !important;

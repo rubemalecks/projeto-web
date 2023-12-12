@@ -5,7 +5,7 @@
     <h2 class="center">Slides do Site</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper black">
+            <div class="nav-wrapper blue darken-1">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a class="breadcrumb">Slides do Site</a>
@@ -37,9 +37,16 @@
                         <form action="{{ route('admin.slides.remover', $slide->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value="delete">
+                            @can('atualizar-slides')
                             <a href="{{ route('admin.slides.alterar', $slide->id) }}" class="btn orange">Atualizar</a>
-                            <button onclick="return remover(this.form, '{{ $slide->titulo }}')"
-                                class="btn red">Remover</button>
+                            @else
+                            <a class="btn disabled">Atualizar</a>
+                            @endcan
+                            @can('remover-slides')
+                            <button onclick="return remover(this.form, '{{ $slide->titulo }}')" class="btn red">Remover</button>
+                            @else
+                            <button class="btn disabled">Remover</button>
+                            @endcan
                         </form>
                     </td>
                 </tr>
@@ -48,7 +55,11 @@
         </table>
     </div>
     <div class="row">
-        <a href="{{ route('admin.slides.cadastrar') }}" class="btn black">Cadastrar</a>
+        @can('cadastrar-slides')
+        <a href="{{ route('admin.slides.cadastrar') }}" class="btn blue">Cadastrar</a>
+        @else
+        <a class="btn disabled">Cadastrar</a>
+        @endcan
     </div>
 </div>
 <script>

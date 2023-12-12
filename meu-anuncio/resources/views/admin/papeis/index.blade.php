@@ -5,7 +5,7 @@
     <h2 class="center">Listagem de Papéis</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper black">
+            <div class="nav-wrapper blue darken-1">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a class="breadcrumb">Listagem de Papéis</a>
@@ -33,12 +33,21 @@
                         <form action="{{ route('admin.papeis.remover', $papel->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value="delete">
-                            <a href="{{ route('admin.papeis.permissoes', $papel->id) }}"
-                                class="btn green">Permissões</a>
-                            <a href="{{ route('admin.papeis.alterar', $papel->id) }}"
-                                class="btn orange{{ $papel->nome == 'Admin' ? ' disabled' : '' }}">Atualizar</a>
-                            <button onclick="return remover(this.form, '{{ $papel->nome }}')"
-                                class="btn red{{ $papel->nome == 'Admin' ? ' disabled' : '' }}">Remover</button>
+                            @can('listar-permissoes-papeis')
+                            <a href="{{ route('admin.papeis.permissoes', $papel->id) }}" class="btn green{{ $papel->nome == 'Admin' ? ' disabled' : '' }}">Permissões</a>
+                            @else
+                            <a class="btn disabled">Permissões</a>
+                            @endcan
+                            @can('atualizar-papeis')
+                            <a href="{{ route('admin.papeis.alterar', $papel->id) }}" class="btn orange{{ $papel->nome == 'Admin' ? ' disabled' : '' }}">Atualizar</a>
+                            @else
+                            <a href="#!" class="btn disabled">Atualizar</a>
+                            @endcan
+                            @can('remover-papeis')
+                            <button onclick="return remover(this.form, '{{ $papel->nome }}')" class="btn red{{ $papel->nome == 'Admin' ? ' disabled' : '' }}">Remover</button>
+                            @else
+                            <button class="btn disabled">Remover</button>
+                            @endcan
                         </form>
                     </td>
                 </tr>
@@ -47,7 +56,11 @@
         </table>
     </div>
     <div class="row">
-        <a href="{{ route('admin.papeis.cadastrar') }}" class="btn black">Cadastrar</a>
+        @can('cadastrar-papeis')
+        <a href="{{ route('admin.papeis.cadastrar') }}" class="btn blue">Cadastrar</a>
+        @else
+        <a href="#!" class="btn disabled">Cadastrar</a>
+        @endcan
     </div>
 </div>
 <script>
