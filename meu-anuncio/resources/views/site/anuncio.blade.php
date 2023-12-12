@@ -10,7 +10,7 @@
         <div class="col s12 m8">
             @if ($anuncio->imagens()->count())
             <div class="row">
-                <div class="slider">
+                <div class="slider" >
                     <ul class="slides">
                         @foreach ($imagens as $imagem)
                         <li>

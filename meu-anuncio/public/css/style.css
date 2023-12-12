@@ -19,6 +19,12 @@ blockquote {
     text-shadow: 0 0 3px black;
 }
 
+
+.card-image img {
+    height: 250px;
+
+}
+
 .card-title.home {
     font-weight: bold;
     text-shadow: none;

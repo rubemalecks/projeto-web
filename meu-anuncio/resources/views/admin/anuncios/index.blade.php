@@ -35,7 +35,7 @@
                     <td>{{ $anuncio->finalidade }}</td>
                     <td>{{ $anuncio->municipio->nome }}</td>
                     <td>R$ {{ number_format($anuncio->valor, 2, ",", ".") }}</td>
-                    <td><img src="{{ asset($anuncio->imagem) }}" alt="" width="100"></td>
+                    <td><img src="{{ asset($anuncio->imagem) }}" alt="" height="100" width="100"></td>
                     <td>{{ $anuncio->status }}</td>
                     <td>
                         <form action="{{ route('admin.anuncios.remover', $anuncio->id) }}" method="post">

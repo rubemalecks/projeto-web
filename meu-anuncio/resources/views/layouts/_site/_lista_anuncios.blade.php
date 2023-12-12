@@ -8,7 +8,7 @@
     @foreach ($anuncios as $anuncio)
     <div class="col s12 m3">
         <div class="card">
-            <div class="card-image">
+            <div class="card-image meucard">
                 <a
                     href="{{ route('site.anuncio', [$anuncio->id, Illuminate\Support\Str::slug($anuncio->titulo, '_')]) }}"><img
                         src="{{ asset($anuncio->imagem) }}"></a>
