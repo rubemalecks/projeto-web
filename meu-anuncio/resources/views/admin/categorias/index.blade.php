@@ -5,7 +5,7 @@
     <h2 class="center">Listagem de Categorias</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper blue darken-1">
+            <div class="nav-wrapper black">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a class="breadcrumb">Listagem de Categorias</a>
@@ -50,7 +50,7 @@
     </div>
     <div class="row">
         @can('cadastrar-categorias')
-        <a href="{{ route('admin.categorias.cadastrar') }}" class="btn blue">Cadastrar</a>
+        <a href="{{ route('admin.categorias.cadastrar') }}" class="btn black">Cadastrar</a>
         @else
         <a class="btn disabled">Cadastrar</a>
         @endcan

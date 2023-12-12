@@ -5,7 +5,8 @@
     <h2 class="center">Imagens do Anúncio</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper blue darken-1">
+            <div class="nav-wrapper black
+ darken-1">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a href="{{ route('admin.anuncios') }}" class="breadcrumb">Listagem de Anúncios</a>
@@ -57,7 +58,7 @@
     </div>
     <div class="row">
         @can('cadastrar-imagens')
-        <a href="{{ route('admin.imagens.cadastrar', $anuncio->id) }}" class="btn blue">Cadastrar</a>
+        <a href="{{ route('admin.imagens.cadastrar', $anuncio->id) }}" class="btn black">Cadastrar</a>
         @else
         <a class="btn disabled">Cadastrar</a>
         @endcan

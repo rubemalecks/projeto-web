@@ -5,7 +5,7 @@
     <h2 class="center">Listagem de Páginas</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper blue darken-1">
+            <div class="nav-wrapper black darken-1">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a class="breadcrumb">Listagem de Páginas</a>

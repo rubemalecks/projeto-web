@@ -23,7 +23,7 @@
         @endcan
         @can('listar-categorias')
         <div class="col s12 m4">
-            <div class="card blue darken-1">
+            <div class="card black">
                 <div class="card-content white-text">
                     <span class="card-title home">Categorias</span>
                     <p>Listagem de Categorias</p>

@@ -5,7 +5,7 @@
     <h2 class="center">Permissões de {{ $papel->nome }}</h2>
     <div class="row">
         <nav>
-            <div class="nav-wrapper blue darken-1">
+            <div class="nav-wrapper black darken-1">
                 <div class="col s12">
                     <a href="{{ route('admin.home') }}" class="breadcrumb">Início</a>
                     <a href="{{ route('admin.papeis') }}" class="breadcrumb">Listagem de Papéis</a>
@@ -26,7 +26,7 @@
                 </select>
             </div>
             <div class="input-field col m4 s12">
-                <button class="btn blue">Adicionar</button>
+                <button class="btn black">Adicionar</button>
             </div>
         </form>
     </div>
