@@ -41,8 +41,11 @@
                         <form action="{{ route('admin.anuncios.remover', $anuncio->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="_method" value="delete">
-                            <a href="{{ route('admin.anuncios.alterar', $anuncio->id) }}" class="btn orange">Atualizar</a>
-                            <button onclick="return remover(this.form, '{{ $anuncio->titulo }}')" class="btn red">Remover</button>
+                            <a href="{{ route('admin.imagens', $anuncio->id) }}" class="btn green">Imagens</a>
+                            <a href="{{ route('admin.anuncios.alterar', $anuncio->id) }}"
+                                class="btn orange">Atualizar</a>
+                            <button onclick="return remover(this.form, '{{ $anuncio->titulo }}')"
+                                class="btn red">Remover</button>
                         </form>
                     </td>
                 </tr>
@@ -55,8 +58,8 @@
     </div>
 </div>
 <script>
-    function remover(form, nome) {
-        if (confirm("Confirma a remoção do município '" + nome + "'?")) {
+    function remover(form, titulo) {
+        if (confirm("Confirma a remoção do anúncio '" + titulo + "'?")) {
             form.submit();
         } else {
             return false;

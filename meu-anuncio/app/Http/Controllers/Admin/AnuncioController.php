@@ -95,12 +95,12 @@ class AnuncioController extends Controller
 
     public function remover(Request $request, $id)
     {
-        Anuncio::find($id)->delete();
+        $anuncio = Anuncio::find($id);
+        $anuncio->imagens()->delete();
+        $anuncio->delete();
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'Anúncio removido com sucesso!', 'class' => 'green white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'Anúncio removido com sucesso!', 'class' => 'green white-text']);
         return redirect()->route('admin.anuncios');
     }
 }

@@ -9,9 +9,16 @@ main {
 }
 
 blockquote {
-
     margin: 20px 0;
     padding-left: 1.2rem;
-    border-left: 5px solid #64b5f6 !important;;
+    border-left: 5px solid #64b5f6;
+}
 
+.caption :is(h3, h5),
+.card-title {
+    text-shadow: 0 0 3px blue;
+}
+
+.flex.items-center.justify-between {
+    background-color: #64b5f6;
 }
