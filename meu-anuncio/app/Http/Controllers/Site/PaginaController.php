@@ -29,12 +29,11 @@ class PaginaController extends Controller
         $pagina = Pagina::where('tipo', '=', 'Contato')->first();
         $email = $pagina->email;
 
-        Mail::to($email, 'Central de Atendimento')->send(new ContatoSite($dados));
+        Mail::to($email, 'Central de Atendimento')
+            ->send(new ContatoSite($dados));
 
-        $request->session()->flash(
-            'mensagem',
-            ['msg' => 'E-mail de contato enviado com sucesso!', 'class' => 'green white-text']
-        );
+        $request->session()->flash('mensagem',
+            ['msg' => 'E-mail de contato enviado com sucesso!', 'class' => 'green white-text']);
         return redirect()->route('site.contato');
     }
 }
